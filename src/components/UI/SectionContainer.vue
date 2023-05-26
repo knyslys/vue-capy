@@ -1,13 +1,14 @@
 <template>
   <div class="container mx-auto p-4" ref="el">
-    <h1 ref="titleEl" class="text-xl text-emerald-500 font-bold">
+    <h1 ref="titleEls" class="text-xl text-emerald-500 font-bold mb-2">
       <slot name="section-title"></slot>
     </h1>
     <div>
-      <p ref="descEl" class="section-desc">
+      <p ref="descEls" class="section-desc mb-6">
         <slot name="section-desc"> </slot>
       </p>
     </div>
+    <slot> </slot>
   </div>
 </template>
 
@@ -15,12 +16,17 @@
 import { ref, onMounted } from "vue";
 import { animate, inView, stagger, timeline } from "motion";
 import SplitType from "split-type";
-const titleEl = ref(null);
-const descEl = ref(null);
+const titleEls = ref(null);
+const descEls = ref(null);
 const el = ref(null);
+const props = defineProps({
+  sectionName: {
+    type: String,
+  },
+});
 onMounted(() => {
-  const title = SplitType.create(titleEl.value);
-  const desc = SplitType.create(descEl.value);
+  const title = SplitType.create(titleEls.value);
+  const desc = SplitType.create(descEls.value);
   const sequence = [
     [
       title.chars,
@@ -51,7 +57,7 @@ onMounted(() => {
       // animate(title.chars, { opacity: [0, 1] }, { delay: stagger(0.4) });
       timeline(sequence);
     },
-    { margin: "0px 0px 0px 0px" }
+    { margin: "500px 200px 0px 0px" }
   );
 });
 </script>
@@ -60,7 +66,4 @@ onMounted(() => {
 /* :slotted(h1) {
   @apply text-xl text-emerald-500 font-bold;
 } */
-:slotted(div) {
-  @apply mt-2;
-}
 </style>

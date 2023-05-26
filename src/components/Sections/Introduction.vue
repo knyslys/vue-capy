@@ -1,15 +1,14 @@
 <template>
   <section>
-    <section-container>
-      <template #section-title> <h1>What is Capybara?</h1></template>
-      <div>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
-          accusamus modi, adipisci exercitationem minima assumenda eos itaque
-          dignissimos provident commodi voluptatum distinctio, molestiae
-          voluptatem ab sit dolorum omnis laudantium animi.
-        </p>
-      </div>
+    <section-container sectionName="Introduction">
+      <template #section-title>What is Capybara?</template>
+
+      <template #section-desc>
+        The capybara is nature's ultimate chill buddy, a giant guinea pig with a
+        "no worries" attitude. With a face that says "I'm ready for a spa day,"
+        this laid-back rodent is the real MVP of the animal kingdom's relaxation
+        club. Just imagine a furry couch potato living its best life!
+      </template>
     </section-container>
   </section>
 </template>
