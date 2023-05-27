@@ -11,14 +11,10 @@
       </template>
 
       <template #other>
-        <div class="section-bg-wrapper sticky top-0">
+        <div class="section-bg-wrapper sticky top-0 w-screen">
           <img src="images/cards/faq-bg.jpg" alt="capy" />
         </div>
         <div class="cards-wrapper flex flex-col gap-y-2 mt-10">
-          <!-- <div class="card h-96 bg-slate-700"></div>
-          <div class="card h-96 bg-slate-500"></div>
-          <div class="card h-96 bg-slate-400"></div>
-          <div class="card h-96 bg-slate-300"></div> -->
           <card
             v-for="(card, index) in arr"
             :index="index"
@@ -44,16 +40,12 @@ onMounted(() => {
     [
       sectionBg,
       {
-        scale: [0, 1],
+        clipPath: ["circle(50.0% at 100% 0)", "circle(50.0% at 0 100%)"],
       },
       { duration: 5 },
     ],
   ];
   scroll(timeline(sequence), {
-    // offset: ["1%", "50%"],
-
-    // `${(props.index / props.allCards) * 10}%`,
-    // ${(props.index + 1 / props.allCards) * 10}%
     target: faq,
     offset: ["start start", "end end"],
   });

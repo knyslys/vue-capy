@@ -36,7 +36,7 @@ onMounted(() => {
     [
       el.value,
       {
-        scale: [1, 1 - 0.1 * lastIndex],
+        scale: [1, 1 - 0.05 * lastIndex],
       },
     ],
   ];
