@@ -46,11 +46,10 @@ onMounted(() => {
       {
         at: "-5",
         delay: stagger(0.13),
-        easing: "ease-out",
+        easing: spring({ stiffness: 200 }),
       },
     ],
   ];
-
   timeline(sequance);
 });
 </script>

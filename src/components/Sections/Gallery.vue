@@ -1,6 +1,6 @@
 <template>
   <section class="mt-6">
-    <section-container sectionName="Gallery">
+    <section-container>
       <template #section-title>Check Capybaras </template>
 
       <template #section-desc>
@@ -8,23 +8,29 @@
         hilarious capybara photo gallery! These adorable, water-loving critters
         are here to steal your heart and bring an avalanche of smiles.
       </template>
-      <div ref="el" class="galery-container p-2 rounded-md shadow-md">
-        <swiper-gallery @set-bg="setBackground"></swiper-gallery>
-        <p class="text-center mt-6 font-semibold" ref="descEl" :key="descEl">
-          {{ description }}
-        </p>
-      </div>
+      <template #other>
+        <div
+          ref="el"
+          class="galery-container p-2 rounded-md shadow-lg mt-4 opacity-0"
+        >
+          <swiper-gallery @set-bg="setBackground"></swiper-gallery>
+          <p class="text-center mt-6 font-semibold" ref="descElz">
+            {{ description }}
+          </p>
+        </div></template
+      >
     </section-container>
   </section>
 </template>
 
 <script setup>
+import SectionContainer from "../UI/SectionContainer.vue";
 import SwiperGallery from "../Swiper/SwiperGallery.vue";
 import SplitType from "split-type";
-import { animate, stagger } from "motion";
-import { ref, watch, nextTick } from "vue";
+import { animate, stagger, inView } from "motion";
+import { ref, watch, nextTick, onMounted } from "vue";
 const el = ref(null);
-const descEl = ref(null);
+const descElz = ref(null);
 const description = ref("");
 const setBackground = (url, desc) => {
   description.value = desc;
@@ -44,9 +50,28 @@ const setBackground = (url, desc) => {
     }
   );
 };
+onMounted(() => {
+  inView(
+    ".galery-container",
+    (info) => {
+      console.log(info);
+      animate(
+        ".galery-container",
+        {
+          opacity: [0, 1],
+          y: [20, 0],
+        },
+        {
+          duration: 2,
+        }
+      );
+    },
+    { margin: "0px -200px -200px 0px" }
+  );
+});
 watch(description, (newValue) => {
   nextTick(() => {
-    const words = SplitType.create(descEl.value);
+    const words = SplitType.create(descElz.value);
     animate(
       words.words,
       {

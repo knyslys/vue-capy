@@ -1,14 +1,14 @@
 <template>
-  <div class="container mx-auto p-4" ref="el">
+  <div class="container mx-auto p-4" ref="els">
     <h1 ref="titleEls" class="text-xl text-emerald-500 font-bold mb-2">
       <slot name="section-title"></slot>
     </h1>
     <div>
-      <p ref="descEls" class="section-desc mb-6">
+      <p ref="descEls" class="section-desc">
         <slot name="section-desc"> </slot>
       </p>
     </div>
-    <slot> </slot>
+    <slot name="other"> </slot>
   </div>
 </template>
 
@@ -18,12 +18,8 @@ import { animate, inView, stagger, timeline } from "motion";
 import SplitType from "split-type";
 const titleEls = ref(null);
 const descEls = ref(null);
-const el = ref(null);
-const props = defineProps({
-  sectionName: {
-    type: String,
-  },
-});
+const els = ref(null);
+
 onMounted(() => {
   const title = SplitType.create(titleEls.value);
   const desc = SplitType.create(descEls.value);
@@ -52,7 +48,7 @@ onMounted(() => {
     ],
   ];
   inView(
-    el.value,
+    els.value,
     (info) => {
       // animate(title.chars, { opacity: [0, 1] }, { delay: stagger(0.4) });
       timeline(sequence);

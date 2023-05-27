@@ -1,6 +1,6 @@
 <template>
   <section>
-    <section-container sectionName="Introduction">
+    <section-container key="2">
       <template #section-title>What is Capybara?</template>
 
       <template #section-desc>
@@ -13,6 +13,8 @@
   </section>
 </template>
 
-<script setup></script>
+<script setup>
+import SectionContainer from "../UI/SectionContainer.vue";
+</script>
 
 <style lang="scss" scoped></style>

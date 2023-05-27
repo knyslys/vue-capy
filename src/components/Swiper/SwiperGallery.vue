@@ -69,13 +69,4 @@ const changeSectionBg = () => {
 };
 </script>
 
-<style scoped>
-img {
-  /* max-width: 100%; */
-}
-.test {
-  /* overflow: hidden;
-  box-shadow: none !important;
-  max-width: 30rem; */
-}
-</style>
+<style scoped></style>
